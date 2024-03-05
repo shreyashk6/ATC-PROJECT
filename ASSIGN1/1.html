@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="./1.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DFA Animation</title>
+  </head>
+  <body>
+    <div class="main-container">
+      <svg
+        width="800"
+        height="600"
+        version="1.1"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <ellipse
+          stroke="black"
+          stroke-width="1"
+          fill="none"
+          cx="221.5"
+          cy="184.5"
+          rx="30"
+          ry="30"
+        />
+        <text x="210.5" y="190.5" font-family="Times New Roman" font-size="20">
+          q0
+        </text>
+        <ellipse
+          stroke="black"
+          stroke-width="1"
+          fill="none"
+          cx="221.5"
+          cy="349.5"
+          rx="30"
+          ry="30"
+        />
+        <text x="210.5" y="355.5" font-family="Times New Roman" font-size="20">
+          q1
+        </text>
+        <ellipse
+          stroke="black"
+          stroke-width="1"
+          fill="none"
+          cx="508.5"
+          cy="184.5"
+          rx="30"
+          ry="30"
+        />
+        <text x="497.5" y="190.5" font-family="Times New Roman" font-size="20">
+          q2
+        </text>
+        <ellipse
+          stroke="black"
+          stroke-width="1"
+          fill="none"
+          cx="508.5"
+          cy="184.5"
+          rx="24"
+          ry="24"
+        />
+        <ellipse
+          stroke="black"
+          stroke-width="1"
+          fill="none"
+          cx="508.5"
+          cy="349.5"
+          rx="30"
+          ry="30"
+        />
+        <text x="497.5" y="355.5" font-family="Times New Roman" font-size="20">
+          q3
+        </text>
+        <polygon
+          stroke="black"
+          stroke-width="1"
+          points="251.5,349.5 478.5,349.5"
+        />
+        <polygon
+          fill="black"
+          stroke-width="1"
+          points="478.5,349.5 470.5,344.5 470.5,354.5"
+        />
+        <text x="359.5" y="370.5" font-family="Times New Roman" font-size="20">
+          b
+        </text>
+        <path
+          stroke="black"
+          stroke-width="1"
+          fill="none"
+          d="M 234.446,211.515 A 160.351,160.351 0 0 1 234.446,322.485"
+        />
+        <polygon
+          fill="black"
+          stroke-width="1"
+          points="234.446,322.485 241.905,316.71 232.523,313.249"
+        />
+        <text x="249.5" y="273.5" font-family="Times New Roman" font-size="20">
+          a
+        </text>
+        <path
+          stroke="black"
+          stroke-width="1"
+          fill="none"
+          d="M 207.851,322.839 A 152.529,152.529 0 0 1 207.851,211.161"
+        />
+        <polygon
+          fill="black"
+          stroke-width="1"
+          points="207.851,211.161 200.27,216.775 209.576,220.436"
+        />
+        <text x="181.5" y="273.5" font-family="Times New Roman" font-size="20">
+          a
+        </text>
+        <polygon
+          stroke="black"
+          stroke-width="1"
+          points="251.5,184.5 478.5,184.5"
+        />
+        <polygon
+          fill="black"
+          stroke-width="1"
+          points="478.5,184.5 470.5,179.5 470.5,189.5"
+        />
+        <text x="359.5" y="205.5" font-family="Times New Roman" font-size="20">
+          b
+        </text>
+        <polygon
+          stroke="black"
+          stroke-width="1"
+          points="508.5,214.5 508.5,319.5"
+        />
+        <polygon
+          fill="black"
+          stroke-width="1"
+          points="508.5,319.5 513.5,311.5 503.5,311.5"
+        />
+        <text x="492.5" y="273.5" font-family="Times New Roman" font-size="20">
+          a
+        </text>
+        <path
+          stroke="black"
+          stroke-width="1"
+          fill="none"
+          d="M 521.753,157.717 A 22.5,22.5 0 1 1 537.82,178.728"
+        />
+        <text x="567.5" y="135.5" font-family="Times New Roman" font-size="20">
+          b
+        </text>
+        <polygon
+          fill="black"
+          stroke-width="1"
+          points="537.82,178.728 545.94,183.53 545.695,173.533"
+        />
+        <path
+          stroke="black"
+          stroke-width="1"
+          fill="none"
+          d="M 538.348,350.953 A 22.5,22.5 0 1 1 525.502,374.075"
+        />
+        <text x="574.5" y="400.5" font-family="Times New Roman" font-size="20">
+          a,b
+        </text>
+        <polygon
+          fill="black"
+          stroke-width="1"
+          points="525.502,374.075 524.343,383.437 533.41,379.22"
+        />
+      </svg>
+      <div id="current-state"></div>
+      <div class="container-insides">
+        <div>DFA which accepts w = { a^n b^m | n mod 2 =0 & b>=1 }</div>
+        <label for="input">Input:</label>
+        <input type="text" id="input" name="input" required />
+        <button onclick="processInput()" class="button">Process Input</button>
+        <h3 id="output"></h3>
+      </div>
+    </div>
+
+    <script>
+      function delay(ms) {
+        return new Promise((resolve) => setTimeout(resolve, ms));
+      }
+      // Define DFA states and transitions
+      const states = ["q0", "q1", "q2"];
+      const transitions = {
+        q0: { a: "q1", b: "q2" },
+        q1: { a: "q0", b: "q3" },
+        q2: { a: "q3", b: "q2" },
+        q3: { a: "q3", b: "q3" },
+      };
+      const statePositions = {
+        q0: { top: 164, left: 565 },
+        q1: { top: 329, left: 565 },
+        q2: { top: 164, left: 850 },
+        q3: { top: 329, left: 850 },
+      };
+
+      // Define initial state and accepting state
+      const initialState = "q0";
+      const acceptingState = "q2";
+
+      // Function to process input and update DFA state
+      async function processInput() {
+        const output = document.getElementById("output");
+        var state = document.getElementById("current-state").style;
+        const input = document.getElementById("input").value.trim();
+        if (!input) {
+          output.innerText = "Enter the string!"
+          return
+        }
+        regex = /^[ab]+$/
+        const checker = regex.test(input);
+        if (!checker) {
+          output.innerText = "Wrong Language! \nUse only a and b"
+          return
+        }
+        let currentState = initialState;
+        for (let symbol of input) {
+          if (symbol!="a"&&symbol!="b") {
+            output.innerText = "Wrong Language!"
+          }
+          output.innerText = "Processing your input..."
+          console.log(symbol);
+          if (currentState === transitions[currentState][symbol]) {
+            continue;
+          }
+          currentState = transitions[currentState][symbol];
+          const topper = statePositions[currentState].top;
+          state.top = topper + "px";
+          state.left = statePositions[currentState].left + "px";
+          await delay(1000);
+        }
+        if (currentState === acceptingState) {
+          output.innerText = "Your input was accepted by the dfa";
+        } else {
+          const output = document.getElementById("output");
+          output.innerText = "Your input was rejected by the dfa";
+        }
+        await delay(5000);
+        state.top = statePositions[initialState].top + "px";
+        state.left = statePositions[initialState].left + "px";
+        output.innerText = "";
+      }
+    </script>
+  </body>
+</html>
