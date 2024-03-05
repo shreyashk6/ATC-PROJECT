@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="2.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DFA Animation</title>
+  </head>
+  <body>
+    <div class="main-container">
+      <svg
+        width="800"
+        height="600"
+        version="1.1"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <ellipse
+          stroke="black"
+          stroke-width="1"
+          fill="none"
+          cx="238.5"
+          cy="212.5"
+          rx="30"
+          ry="30"
+        />
+        <text x="222.5" y="218.5" font-family="Times New Roman" font-size="20">
+          q00
+        </text>
+        <ellipse
+          stroke="black"
+          stroke-width="1"
+          fill="none"
+          cx="238.5"
+          cy="212.5"
+          rx="24"
+          ry="24"
+        />
+        <ellipse
+          stroke="black"
+          stroke-width="1"
+          fill="none"
+          cx="391.5"
+          cy="217.5"
+          rx="30"
+          ry="30"
+        />
+        <text x="375.5" y="223.5" font-family="Times New Roman" font-size="20">
+          q01
+        </text>
+        <ellipse
+          stroke="black"
+          stroke-width="1"
+          fill="none"
+          cx="535.5"
+          cy="217.5"
+          rx="30"
+          ry="30"
+        />
+        <text x="519.5" y="223.5" font-family="Times New Roman" font-size="20">
+          q02
+        </text>
+        <ellipse
+          stroke="black"
+          stroke-width="1"
+          fill="none"
+          cx="241.5"
+          cy="340.5"
+          rx="30"
+          ry="30"
+        />
+        <text x="225.5" y="346.5" font-family="Times New Roman" font-size="20">
+          q10
+        </text>
+        <ellipse
+          stroke="black"
+          stroke-width="1"
+          fill="none"
+          cx="391.5"
+          cy="340.5"
+          rx="30"
+          ry="30"
+        />
+        <text x="375.5" y="346.5" font-family="Times New Roman" font-size="20">
+          q11
+        </text>
+        <ellipse
+          stroke="black"
+          stroke-width="1"
+          fill="none"
+          cx="391.5"
+          cy="340.5"
+          rx="24"
+          ry="24"
+        />
+        <ellipse
+          stroke="black"
+          stroke-width="1"
+          fill="none"
+          cx="535.5"
+          cy="340.5"
+          rx="30"
+          ry="30"
+        />
+        <text x="519.5" y="346.5" font-family="Times New Roman" font-size="20">
+          q12
+        </text>
+        <ellipse
+          stroke="black"
+          stroke-width="1"
+          fill="none"
+          cx="241.5"
+          cy="463.5"
+          rx="30"
+          ry="30"
+        />
+        <text x="225.5" y="469.5" font-family="Times New Roman" font-size="20">
+          q20
+        </text>
+        <ellipse
+          stroke="black"
+          stroke-width="1"
+          fill="none"
+          cx="391.5"
+          cy="463.5"
+          rx="30"
+          ry="30"
+        />
+        <text x="375.5" y="469.5" font-family="Times New Roman" font-size="20">
+          q21
+        </text>
+        <ellipse
+          stroke="black"
+          stroke-width="1"
+          fill="none"
+          cx="535.5"
+          cy="463.5"
+          rx="30"
+          ry="30"
+        />
+        <text x="519.5" y="469.5" font-family="Times New Roman" font-size="20">
+          q22
+        </text>
+        <ellipse
+          stroke="black"
+          stroke-width="1"
+          fill="none"
+          cx="535.5"
+          cy="463.5"
+          rx="24"
+          ry="24"
+        />
+        <polygon
+          stroke="black"
+          stroke-width="1"
+          points="239.203,242.492 240.797,310.508"
+        />
+        <polygon
+          fill="black"
+          stroke-width="1"
+          points="240.797,310.508 245.608,302.393 235.611,302.628"
+        />
+        <text x="224.5" y="282.5" font-family="Times New Roman" font-size="20">
+          a
+        </text>
+        <polygon
+          stroke="black"
+          stroke-width="1"
+          points="241.5,370.5 241.5,433.5"
+        />
+        <polygon
+          fill="black"
+          stroke-width="1"
+          points="241.5,433.5 246.5,425.5 236.5,425.5"
+        />
+        <text x="225.5" y="408.5" font-family="Times New Roman" font-size="20">
+          a
+        </text>
+        <polygon
+          stroke="black"
+          stroke-width="1"
+          points="391.5,247.5 391.5,310.5"
+        />
+        <polygon
+          fill="black"
+          stroke-width="1"
+          points="391.5,310.5 396.5,302.5 386.5,302.5"
+        />
+        <text x="396.5" y="285.5" font-family="Times New Roman" font-size="20">
+          a
+        </text>
+        <path
+          stroke="black"
+          stroke-width="1"
+          fill="none"
+          d="M 400.516,369.066 A 157.58,157.58 0 0 1 400.516,434.934"
+        />
+        <polygon
+          fill="black"
+          stroke-width="1"
+          points="400.516,434.934 407.078,428.156 397.299,426.066"
+        />
+        <text x="408.5" y="408.5" font-family="Times New Roman" font-size="20">
+          a
+        </text>
+        <polygon
+          stroke="black"
+          stroke-width="1"
+          points="535.5,247.5 535.5,310.5"
+        />
+        <polygon
+          fill="black"
+          stroke-width="1"
+          points="535.5,310.5 540.5,302.5 530.5,302.5"
+        />
+        <text x="519.5" y="285.5" font-family="Times New Roman" font-size="20">
+          a
+        </text>
+        <polygon
+          stroke="black"
+          stroke-width="1"
+          points="535.5,370.5 535.5,433.5"
+        />
+        <polygon
+          fill="black"
+          stroke-width="1"
+          points="535.5,433.5 540.5,425.5 530.5,425.5"
+        />
+        <text x="519.5" y="408.5" font-family="Times New Roman" font-size="20">
+          a
+        </text>
+        <polygon
+          stroke="black"
+          stroke-width="1"
+          points="268.484,213.48 361.516,216.52"
+        />
+        <polygon
+          fill="black"
+          stroke-width="1"
+          points="361.516,216.52 353.684,211.262 353.357,221.256"
+        />
+        <text x="309.5" y="236.5" font-family="Times New Roman" font-size="20">
+          b
+        </text>
+        <polygon
+          stroke="black"
+          stroke-width="1"
+          points="421.5,217.5 505.5,217.5"
+        />
+        <polygon
+          fill="black"
+          stroke-width="1"
+          points="505.5,217.5 497.5,212.5 497.5,222.5"
+        />
+        <text x="457.5" y="238.5" font-family="Times New Roman" font-size="20">
+          b
+        </text>
+        <path
+          stroke="black"
+          stroke-width="1"
+          fill="none"
+          d="M 270.343,332.331 A 222.81,222.81 0 0 1 362.657,332.331"
+        />
+        <polygon
+          fill="black"
+          stroke-width="1"
+          points="362.657,332.331 355.866,325.782 353.795,335.565"
+        />
+        <text x="310.5" y="318.5" font-family="Times New Roman" font-size="20">
+          b
+        </text>
+        <polygon
+          stroke="black"
+          stroke-width="1"
+          points="421.5,340.5 505.5,340.5"
+        />
+        <polygon
+          fill="black"
+          stroke-width="1"
+          points="505.5,340.5 497.5,335.5 497.5,345.5"
+        />
+        <text x="457.5" y="331.5" font-family="Times New Roman" font-size="20">
+          b
+        </text>
+        <polygon
+          stroke="black"
+          stroke-width="1"
+          points="271.5,463.5 361.5,463.5"
+        />
+        <polygon
+          fill="black"
+          stroke-width="1"
+          points="361.5,463.5 353.5,458.5 353.5,468.5"
+        />
+        <text x="310.5" y="454.5" font-family="Times New Roman" font-size="20">
+          b
+        </text>
+        <polygon
+          stroke="black"
+          stroke-width="1"
+          points="421.5,463.5 505.5,463.5"
+        />
+        <polygon
+          fill="black"
+          stroke-width="1"
+          points="505.5,463.5 497.5,458.5 497.5,468.5"
+        />
+        <text x="457.5" y="454.5" font-family="Times New Roman" font-size="20">
+          b
+        </text>
+        <path
+          stroke="black"
+          stroke-width="1"
+          fill="none"
+          d="M 554.24,240.882 A 178.611,178.611 0 0 1 554.24,440.118"
+        />
+        <polygon
+          fill="black"
+          stroke-width="1"
+          points="554.24,240.882 554.552,250.311 562.852,244.733"
+        />
+        <text x="589.5" y="346.5" font-family="Times New Roman" font-size="20">
+          a
+        </text>
+        <path
+          stroke="black"
+          stroke-width="1"
+          fill="none"
+          d="M 263.962,196.669 A 251.117,251.117 0 0 1 510.586,200.82"
+        />
+        <polygon
+          fill="black"
+          stroke-width="1"
+          points="263.962,196.669 273.377,197.254 268.614,188.461"
+        />
+        <text x="382.5" y="157.5" font-family="Times New Roman" font-size="20">
+          b
+        </text>
+        <path
+          stroke="black"
+          stroke-width="1"
+          fill="none"
+          d="M 225.782,437.975 A 219.622,219.622 0 0 1 223.396,238.394"
+        />
+        <polygon
+          fill="black"
+          stroke-width="1"
+          points="223.396,238.394 215.366,243.344 224.327,247.781"
+        />
+        <text x="184.5" y="344.5" font-family="Times New Roman" font-size="20">
+          a
+        </text>
+        <path
+          stroke="black"
+          stroke-width="1"
+          fill="none"
+          d="M 511.233,481.103 A 230.177,230.177 0 0 1 265.767,481.103"
+        />
+        <polygon
+          fill="black"
+          stroke-width="1"
+          points="265.767,481.103 269.868,489.598 275.201,481.139"
+        />
+        <text x="382.5" y="537.5" font-family="Times New Roman" font-size="20">
+          b
+        </text>
+        <path
+          stroke="black"
+          stroke-width="1"
+          fill="none"
+          d="M 509.178,354.863 A 279.822,279.822 0 0 1 267.822,354.863"
+        />
+        <polygon
+          fill="black"
+          stroke-width="1"
+          points="267.822,354.863 272.884,362.824 277.196,353.802"
+        />
+        <text x="382.5" y="403.5" font-family="Times New Roman" font-size="20">
+          b
+        </text>
+        <path
+          stroke="black"
+          stroke-width="1"
+          fill="none"
+          d="M 373.887,439.253 A 189.25,189.25 0 0 1 373.887,241.747"
+        />
+        <polygon
+          fill="black"
+          stroke-width="1"
+          points="373.887,241.747 365.447,245.962 373.978,251.18"
+        />
+        <text x="330.5" y="346.5" font-family="Times New Roman" font-size="20">
+          a
+        </text>
+      </svg>
+      <div id="current-state"></div>
+      <div class="container-insides">
+        <div>DFA which accepts L = {w | w ∈ {a, b}* and Na (w) mod 3 = Nb (w) mod 3}.</div>
+        <label for="input">Input:</label>
+        <input type="text" id="input" name="input" required />
+        <button onclick="processInput()" class="button">Process Input</button>
+        <h3 id="output"></h3>
+        <h5 id="read-symbol"></h5>
+      </div>
+    </div>
+
+    <script>
+      function delay(ms) {
+        return new Promise((resolve) => setTimeout(resolve, ms));
+      }
+      // Define DFA states and transitions
+      const states = ["q0", "q1", "q2"];
+      const transitions = {
+        q00: { a: "q10", b: "q01" },
+        q01: { a: "q11", b: "q02" },
+        q02: { a: "q12", b: "q00" },
+        q10: { a: "q20", b: "q11" },
+        q11: { a: "q21", b: "q12" },
+        q12: { a: "q22", b: "q10" },
+        q20: { a: "q00", b: "q21" },
+        q21: { a: "q01", b: "q22" },
+        q22: { a: "q02", b: "q20" },
+      };
+      const statePositions = {
+        q00: { top: 112, left: 575 },
+        q01: { top: 117, left: 725 },
+        q02: { top: 117, left: 857 },
+        q10: { top: 240, left: 575 },
+        q11: { top: 240, left: 725 },
+        q12: { top: 240, left: 857 },
+        q20: { top: 364, left: 575 },
+        q21: { top: 364, left: 725 },
+        q22: { top: 364, left: 875 },
+      };
+
+      // Define initial state and accepting state
+      const initialState = "q00";
+      const acceptingState = ["q00","q11","q22"];
+
+      // Function to process input and update DFA state
+      async function processInput() {
+        const output = document.getElementById("output");
+        const showOut = [];
+        const readSymbol = document.getElementById("read-symbol");
+        var state = document.getElementById("current-state").style;
+        const input = document.getElementById("input").value.trim();
+        if (!input) {
+          output.innerText = "Enter the string!";
+          return;
+        }
+        regex = /^[ab]+$/;
+        const checker = regex.test(input);
+        if (!checker) {
+          output.innerText = "Wrong Language! \nUse only a and b";
+          return;
+        }
+        let currentState = initialState;
+        for (let symbol of input) {
+          if (symbol != "a" && symbol != "b") {
+            output.innerText = "Wrong Language!";
+          }
+          output.innerText = "Processing your input...";
+          console.log(symbol);
+          showOut.push(symbol)
+          readSymbol.innerText = "Reading..." + showOut;
+          if (currentState === transitions[currentState][symbol]) {
+            continue;
+          }
+          currentState = transitions[currentState][symbol];
+          const topper = statePositions[currentState].top;
+          state.top = topper + "px";
+          state.left = statePositions[currentState].left + "px";
+          await delay(1000);
+        }
+        if (acceptingState.includes(currentState)) {
+          output.innerText = "Your input was accepted by the dfa";
+        } else {
+          const output = document.getElementById("output");
+          output.innerText = "Your input was rejected by the dfa";
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="5.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DFA Animation</title>
+  </head>
+  <body>
+    <div class="main-container">
+        <svg width="800" height="600" version="1.1" xmlns="http://www.w3.org/2000/svg">
+            <ellipse stroke="black" stroke-width="1" fill="none" cx="210.5" cy="288.5" rx="30" ry="30"/>
+            <text x="199.5" y="294.5" font-family="Times New Roman" font-size="20">q0</text>
+            <ellipse stroke="black" stroke-width="1" fill="none" cx="327.5" cy="288.5" rx="30" ry="30"/>
+            <text x="316.5" y="294.5" font-family="Times New Roman" font-size="20">q1</text>
+            <ellipse stroke="black" stroke-width="1" fill="none" cx="452.5" cy="288.5" rx="30" ry="30"/>
+            <text x="441.5" y="294.5" font-family="Times New Roman" font-size="20">q2</text>
+            <ellipse stroke="black" stroke-width="1" fill="none" cx="452.5" cy="288.5" rx="24" ry="24"/>
+            <ellipse stroke="black" stroke-width="1" fill="none" cx="576.5" cy="288.5" rx="30" ry="30"/>
+            <text x="565.5" y="294.5" font-family="Times New Roman" font-size="20">q3</text>
+            <polygon stroke="black" stroke-width="1" points="147.5,288.5 180.5,288.5"/>
+            <text x="100.5" y="294.5" font-family="Times New Roman" font-size="20">start</text>
+            <polygon fill="black" stroke-width="1" points="180.5,288.5 172.5,283.5 172.5,293.5"/>
+            <polygon stroke="black" stroke-width="1" points="240.5,288.5 297.5,288.5"/>
+            <polygon fill="black" stroke-width="1" points="297.5,288.5 289.5,283.5 289.5,293.5"/>
+            <text x="263.5" y="309.5" font-family="Times New Roman" font-size="20">a</text>
+            <polygon stroke="black" stroke-width="1" points="357.5,288.5 422.5,288.5"/>
+            <polygon fill="black" stroke-width="1" points="422.5,288.5 414.5,283.5 414.5,293.5"/>
+            <text x="384.5" y="309.5" font-family="Times New Roman" font-size="20">b</text>
+            <polygon stroke="black" stroke-width="1" points="482.5,288.5 546.5,288.5"/>
+            <polygon fill="black" stroke-width="1" points="546.5,288.5 538.5,283.5 538.5,293.5"/>
+            <text x="509.5" y="309.5" font-family="Times New Roman" font-size="20">a</text>
+            <path stroke="black" stroke-width="1" fill="none" d="M 603.297,275.275 A 22.5,22.5 0 1 1 603.297,301.725"/>
+            <text x="649.5" y="294.5" font-family="Times New Roman" font-size="20">a,b</text>
+            <polygon fill="black" stroke-width="1" points="603.297,301.725 606.83,310.473 612.708,302.382"/>
+            <path stroke="black" stroke-width="1" fill="none" d="M 439.275,261.703 A 22.5,22.5 0 1 1 465.725,261.703"/>
+            <text x="446.5" y="212.5" font-family="Times New Roman" font-size="20">b</text>
+            <polygon fill="black" stroke-width="1" points="465.725,261.703 474.473,258.17 466.382,252.292"/>
+            <path stroke="black" stroke-width="1" fill="none" d="M 314.275,261.703 A 22.5,22.5 0 1 1 340.725,261.703"/>
+            <text x="322.5" y="212.5" font-family="Times New Roman" font-size="20">a</text>
+            <polygon fill="black" stroke-width="1" points="340.725,261.703 349.473,258.17 341.382,252.292"/>
+            <path stroke="black" stroke-width="1" fill="none" d="M 432.257,310.575 A 151.183,151.183 0 0 1 230.743,310.575"/>
+            <polygon fill="black" stroke-width="1" points="432.257,310.575 422.961,312.179 429.625,319.634"/>
+            <text x="325.5" y="370.5" font-family="Times New Roman" font-size="20">b</text>
+        </svg>
+        
+
+      <div id="current-state"></div>
+      <div class="container-insides">
+        <div>
+          DFA which accepts strings of language having all ‘a’ before all ‘b’.
+        </div>
+        <label for="input">Input:</label>
+        <input type="text" id="input" name="input" required />
+        <button onclick="processInput()" class="button">Process Input</button>
+        <h3 id="output"></h3>
+        <h5 id="read-symbol"></h5>
+      </div>
+    </div>
+
+    <script>
+      function delay(ms) {
+        return new Promise((resolve) => setTimeout(resolve, ms));
+      }
+      const transitions = {
+        q0: { a: "q1", b: "q2" },
+        q1: { a: "q1", b: "q2" },
+        q2: { a: "q3", b: "q2" },
+        q3: { a: "q3", b: "q3" },
+      };
+      const statePositions = {
+        q0: { top: 189, left: 559 },
+        q1: { top: 189, left: 677 },
+        q2: { top: 189, left: 802 },
+        q3: { top: 189, left: 926 },
+      };
+
+      // Define initial state and accepting state
+      const initialState = "q0";
+      const acceptingState = ["q2"];
+
+      // Function to process input and update DFA state
+      async function processInput() {
+        const output = document.getElementById("output");
+        const showOut = [];
+        const readSymbol = document.getElementById("read-symbol");
+        var state = document.getElementById("current-state").style;
+        const input = document.getElementById("input").value.trim();
+        if (!input) {
+          output.innerText = "Enter the string!";
+          return;
+        }
+        regex = /^[ab]+$/;
+        const checker = regex.test(input);
+        if (!checker) {
+          output.innerText = "Wrong Language! \nUse only a and b";
+          return;
+        }
+        let currentState = initialState;
+        for (let symbol of input) {
+          if (symbol != "a" && symbol != "b") {
+            output.innerText = "Wrong Language!";
+          }
+          output.innerText = "Processing your input...";
+          showOut.push(symbol);
+          readSymbol.innerText = "Reading..." + showOut;
+          if (currentState === transitions[currentState][symbol]) {
+            await delay(100);
+            continue;
+          }
+          currentState = transitions[currentState][symbol];
+          const topper = statePositions[currentState].top;
+          state.top = topper + "px";
+          state.left = statePositions[currentState].left + "px";
+          await delay(1000);
+        }
+        readSymbol.innerText = "";
+        if (acceptingState.includes(currentState)) {
+          output.innerText = "Your input was accepted by the dfa";
+        } else {
+          const output = document.getElementById("output");
+          output.innerText = "Your input was rejected by the dfa";
+        }
+        await delay(5000);
+        state.top = statePositions[initialState].top + "px";
+        state.left = statePositions[initialState].left + "px";
+        output.innerText = "";
+        document.getElementById("input").value = "";
+      }
+    </script>
+  </body>
+</html>
