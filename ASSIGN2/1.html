@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="1.css" />
+    <title>Regex Verify</title>
+  </head>
+  <body>
+    <div class="login-main-container">
+      <div class="login-form-container">
+        <h3>
+          Enter String to check if the String follows the regular expression
+        </h3>
+        <h3>Regex = (a-z + 0-9 + .)^+ @ (a-z + 0-9)^+ . (a-z)(a-z)^+</h3>
+        <form class="login-form">
+          <input
+            class="login-form-insides"
+            id="email"
+            placeholder="Email ID"
+            type="text"
+          />
+          <h3 id="output"></h3>
+          <button
+            type="button"
+            class="login-form-button"
+            onClick="handleSubmit()"
+          >
+            SUBMIT
+          </button>
+        </form>
+      </div>
+    </div>
+  </body>
+  <script>
+    function delay(ms) {
+        return new Promise((resolve) => setTimeout(resolve, ms));
+      }
+    async function handleSubmit() {
+      const email = document.getElementById("email").value;
+      const output = document.getElementById("output");
+      console.log(email);
+      if (!email) {
+        output.innerText = "Error: The string is empty";
+        return;
+      }
+      else{
+        const regex = /^[a-z0-9.]+@[a-z0-9]+\.[a-z]{2,}$/;
+        if (!regex.test(email)) {
+          output.innerText = "Error: Bad email id";
+        } else {
+          output.innerText = "Your Entered string passed the regex";
+        }
+      }
+      await delay(5000);
+    }
+  </script>
+</html>
